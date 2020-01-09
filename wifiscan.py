@@ -26,15 +26,20 @@ def listUn():
 	Scan for open (unencrypted) wireless access points)
 	'''
 	UnCount = 0
-	cells = Cell.all('wlan0') # This uses the wifi library to scan for Wireless Access points
-	numCells = len(list(cells))
-	for cell in cells:
-		if cell.encrypted == False:
-			UnCount += 1
-			joinWifi(cell)
-	if UnCount == 0:
-		print(":: %s APs detected ::" % numCells)
-		print("However none were Unencrypted, starting El Chapo AP")
+	TryAgain = 0
+	while UnCount == 0 and TryAgain >= 4:
+		cells = Cell.all('wlan0') # This uses the wifi library to scan for Wireless Access points
+		numCells = len(list(cells))
+		for cell in cells:
+			if cell.encrypted == False:
+				UnCount += 1
+				joinWifi(cell)
+			else:
+				TryAgain += 1
+	print(":: %s APs detected ::" % numCells)
+	print("However none were Unencrypted, starting El Chapo AP")
+
+
 
 def joinWifi(cell):
 	'''
