@@ -1217,7 +1217,7 @@ echo -e "\033[1m$INF\033[0m"
 
 cat << _EOF_
 =======================================================================================
-Script Official Page (support and discussing): https://miloserdov.org/?p=35
+Script Official Page (support and discussion): https://miloserdov.org/?p=35
 =======================================================================================
 
 Menu:
@@ -1405,4 +1405,7 @@ fi
 }
 
 
-showMainMenu
+if [ "$1" == "" ] || [ $# -gt 1 ]; then
+   showMainMen
+else
+   $REPLY = $1
