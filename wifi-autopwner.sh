@@ -1239,11 +1239,11 @@ Actions:
 	55. Brute-force of the last captured handshakes (without new capture)
 6. 3WIFI
 	61. Automatic 3WiFi database querying of all detected APs within the range
-7. Автоматический аудит
+7. Automated Audit
 	71. Automated Wi-Fi network audit
 8. Information Gathering
 	81. Show all APs and Clients in the rage
-9. Обновление. О программе и авторах
+9. Update & About the program and authors
 	91. Check for updates
 	92. Upgrade
 	93. Contributors
