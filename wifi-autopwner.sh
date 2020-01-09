@@ -7,10 +7,7 @@ IFACE=""
 if [ "$1" == "" ] || [ $# -gt 1 ]; then
 	REPLY=""
 else
-	echo $1
-   REPLY=$1
-   echo $REPLY
-   read -p "Press [Enter] key to start"
+	REPLY=$1
 fi
 
 
@@ -940,7 +937,7 @@ function showEveryone {
 
 function Contributors {
 	cat ./CONTRIBUTORS.md
-
+	read -p "Press [Enter] key"
 	read -n 1 -s -r -p "${Lang[Strings69]}"
 	if [ $REPLY -eq 71 ]; then
 		echo "=============================================================="
