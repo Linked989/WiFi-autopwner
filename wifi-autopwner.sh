@@ -1,39 +1,24 @@
 #!/bin/bash
 
 # Mi-Al/WiFi-autopwner 2
-VERS="20190113" # hate-tourists-release
+VERS="20200123" # El Chapo-release
 IFACE=""
 
-if [ "$1" == "" ] || [ $# -gt 1 ]; then
-	REPLY=""
-else
-	REPLY=$1
-fi
 
 
+function firstSetup {
 source $(dirname $0)/settings.sh
 
-if [ -e "cracked.txt" ]; then
-	echo ""
-else
+if [ ! -e "cracked.txt" ]; then
 	echo "" > cracked.txt
 fi
-
-if [ -e "blacklist.txt" ]; then
-	echo ""
-else
-	echo "" > blacklist.txt
+if [ ! -e "blacklist.txt" ]; then
+	echo "" > blacklist.txt	
 fi
-
-if [ -d "handshakes" ]; then
-	echo ""
-else
+if [ ! -d "handshakes" ]; then
 	mkdir handshakes
 fi
-
-if [ -d "hccapx" ]; then
-	echo ""
-else
+if [ ! -d "hccapx" ]; then
 	mkdir hccapx
 fi
 
@@ -45,6 +30,7 @@ else
 fi
 
 source $(dirname $0)/lang/main.sh
+}
 
 function selectInterface {
 	#clear
@@ -1148,7 +1134,7 @@ fi
 
 
 function showMainMenu {
-
+firstSetup
 if [[ "$IFACE" ]]; then
 	INF="${Lang[Strings27]} $IFACE"
 

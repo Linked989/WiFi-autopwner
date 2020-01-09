@@ -1,0 +1,46 @@
+    =======================================================================================
+    El Chapo Wireless Autopwn
+    =======================================================================================
+
+    Menu:
+    Actions:
+    1. Wireless Interface
+        11. Select a wireless interface
+        12. Set the interface in monitor mode
+        13. Set the interface in monitor mode + kill processes hindering it + kill NetworkManager
+        14. Set interface in managed mode
+        15. Increase TX-Power of the Wi-Fi card in a soft way (it does not always work, changes are lost when rebooting)
+        16000123465. Permanent increase TX-Power of Wi-Fi card (remains forever) ONLY FOR KALI LINUX!!!
+        17. Permanent increase TX-Power of Wi-Fi card (remains forever) ONLY FOR ARCH LINUX OR BLACKARCH!!!
+    2. Open AP, Captive Portals, Connections
+        21. Show Open Wi-Fi networks
+        22. Connect to Open AP
+        23. Bypass Captive Portals
+        24. Connect to Password Protected AP
+        25. Information Gathering About Local Network
+        26. Creating an Access Point (you must have Internet access through a wire or another Wi-Fi)
+    3. WEP
+        31. WEP Attack
+    4. WPS
+        41. WPS Attack
+        42. Pixie Dust Attack (against every APs with WPS)
+        43. Reveal WPA-PSK password from known WPS PIN
+        44. Known PINs Attack against a certain AP (required Internet Connection)
+        45. Known PINs Attack against all APs (required Internet Connection)
+    5. WPA2/WPA
+        51. Capture handshakes of every AP
+        52. Capture handshakes of every AP + Brute-force
+        53. Capture handshakes of a certain AP
+        54. Capture handshakes of a certain AP + Brute-force
+        55. Brute-force of the last captured handshakes (without new capture)
+    6. 3WIFI
+        61. Automatic 3WiFi database querying of all detected APs within the range
+    7. Automated Audit
+        71. Automated Wi-Fi network audit
+    8. Information Gathering
+        81. Show all APs and Clients in the rage
+    9. Update & About the program and authors
+        91. Check for updates
+        92. Upgrade
+        93. Contributors
+    0. Exit
