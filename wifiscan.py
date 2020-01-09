@@ -27,6 +27,7 @@ def listUn():
 	'''
 	UnCount = 0
 	TryAgain = 0
+	numCells = 0
 	while UnCount == 0 and TryAgain >= 4:
 		cells = Cell.all('wlan0') # This uses the wifi library to scan for Wireless Access points
 		numCells = len(list(cells))
