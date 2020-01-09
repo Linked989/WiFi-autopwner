@@ -1271,6 +1271,7 @@ Actions:
 _EOF_
 
 fi
+}
 
 read -p "${Lang[Strings30]} " REPLY
 
@@ -1405,8 +1406,6 @@ fi
 if [[ $REPLY == 93 ]]; then
 	Contributors
 fi
-
-}
 
 
 showMainMenu
