@@ -5,6 +5,9 @@ def wifiUp():
 	cmd = 'ifconfig wlan0 up'
 	os.system(cmd)
 
+def banner():
+	os.system('cat banner')
+
 
 def internet(host="8.8.8.8", port=53, timeout=3):
 	"""
@@ -36,8 +39,8 @@ def listUn():
 				UnCount += 1
 				joinWifi(cell)
 		TryAgain += 1
-	print(":: %s APs detected ::" % numCells)
-	print("However none were Unencrypted, starting El Chapo AP")
+	print("[+] %s APs detected" % numCells)
+	print("[-] However none were Unencrypted, starting El Chapo AP")
 
 
 
@@ -55,6 +58,7 @@ def joinWifi(cell):
 
 
 if __name__ == "__main__":
+	banner()
 	wifiUp()
 	listUn()
 	if internet():
