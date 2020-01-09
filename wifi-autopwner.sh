@@ -2,9 +2,13 @@
 
 # Mi-Al/WiFi-autopwner 2
 VERS="20190113" # hate-tourists-release
-
 IFACE=""
-REPLY=""
+
+if [ "$1" == "" ] || [ $# -gt 1 ]; then
+	REPLY=""
+else
+   REPLY = $1
+
 
 source $(dirname $0)/settings.sh
 
@@ -1405,7 +1409,4 @@ fi
 }
 
 
-if [ "$1" == "" ] || [ $# -gt 1 ]; then
-   showMainMen
-else
-   $REPLY = $1
+showMainMen
