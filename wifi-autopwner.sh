@@ -2,18 +2,17 @@
 
 # Mi-Al/WiFi-autopwner 2
 VERS="20200123" # El Chapo-release
+
 IFACE=""
+REPLY=""
 
-
-
-function firstSetup {
 source $(dirname $0)/settings.sh
 
 if [ ! -e "cracked.txt" ]; then
 	echo "" > cracked.txt
 fi
 if [ ! -e "blacklist.txt" ]; then
-	echo "" > blacklist.txt	
+	echo "" > blacklist.txt
 fi
 if [ ! -d "handshakes" ]; then
 	mkdir handshakes
@@ -30,10 +29,9 @@ else
 fi
 
 source $(dirname $0)/lang/main.sh
-}
 
 function selectInterface {
-	#clear
+	clear
 	COUNTER=0
 
 	while read -r line ; do
@@ -74,7 +72,7 @@ function selectInterface {
 
 function putInMonitorMode {
 	if [[ "$IFACE" ]]; then
-		#clear
+		clear
 		sudo ip link set "$IFACE" down && sudo iw "$IFACE" set monitor control && sudo ip link set "$IFACE" up
 
 		if [ $REPLY -eq 71 ]; then
@@ -93,7 +91,7 @@ function putInMonitorMode {
 
 function putInManagedMode {
 	if [[ "$IFACE" ]]; then
-		#clear
+		clear
 		sudo ip link set "$IFACE" down && sudo iw "$IFACE" set type managed && sudo ip link set "$IFACE" up
 		sudo systemctl start NetworkManager
 		REPLY=""
@@ -107,7 +105,7 @@ function putInManagedMode {
 
 function putInMonitorModePlus {
 	if [[ "$IFACE" ]]; then
-		#clear
+		clear
 		sudo systemctl stop NetworkManager
 		sudo airmon-ng check kill
 		sudo ip link set "$IFACE" down && sudo iw "$IFACE" set monitor control && sudo ip link set "$IFACE" up
@@ -923,7 +921,7 @@ function showEveryone {
 
 function Contributors {
 	cat ./CONTRIBUTORS.md
-	read -p "Press [Enter] key"
+
 	read -n 1 -s -r -p "${Lang[Strings69]}"
 	if [ $REPLY -eq 71 ]; then
 		echo "=============================================================="
@@ -1108,7 +1106,7 @@ function creatAP {
 			showMainMenu
 		fi
 	else
-		#clear
+		clear
 		echo ${Lang[Strings5]}
 		REPLY=""
 		read -n 1 -s -r -p "${Lang[Strings69]}"
@@ -1119,7 +1117,7 @@ function creatAP {
 
 
 
-#clear
+clear
 COUNTER=0
 
 while read -r line ; do
@@ -1134,7 +1132,7 @@ fi
 
 
 function showMainMenu {
-firstSetup
+
 if [[ "$IFACE" ]]; then
 	INF="${Lang[Strings27]} $IFACE"
 
@@ -1155,7 +1153,6 @@ cat << _EOF_
 =======================================================================================
 Официальная страница программы (поддержка и обсуждение): https://hackware.ru/?p=2176
 =======================================================================================
-
 Меню:
 Выберите желаемое действие:
 1. Операции с Wi-Fi картой
@@ -1198,7 +1195,6 @@ cat << _EOF_
 	92. Установить обновление
 	93. Авторы
 0. Для выхода из программы
-
 _EOF_
 
 else
@@ -1208,9 +1204,8 @@ echo -e "\033[1m$INF\033[0m"
 
 cat << _EOF_
 =======================================================================================
-Script Official Page (support and discussion): https://miloserdov.org/?p=35
+Script Official Page (support and discussing): https://miloserdov.org/?p=35
 =======================================================================================
-
 Menu:
 Actions:
 1. Wireless Interface
@@ -1244,20 +1239,18 @@ Actions:
 	55. Brute-force of the last captured handshakes (without new capture)
 6. 3WIFI
 	61. Automatic 3WiFi database querying of all detected APs within the range
-7. Automated Audit
+7. Автоматический аудит
 	71. Automated Wi-Fi network audit
 8. Information Gathering
 	81. Show all APs and Clients in the rage
-9. Update & About the program and authors
+9. Обновление. О программе и авторах
 	91. Check for updates
 	92. Upgrade
 	93. Contributors
 0. Exit
-
 _EOF_
 
 fi
-}
 
 read -p "${Lang[Strings30]} " REPLY
 
@@ -1392,6 +1385,9 @@ fi
 if [[ $REPLY == 93 ]]; then
 	Contributors
 fi
+
+
+}
 
 
 showMainMenu
