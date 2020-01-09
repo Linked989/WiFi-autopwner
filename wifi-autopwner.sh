@@ -8,6 +8,7 @@ if [ "$1" == "" ] || [ $# -gt 1 ]; then
 	REPLY=""
 else
    REPLY=$1
+fi
 
 
 source $(dirname $0)/settings.sh
@@ -1405,8 +1406,7 @@ if [[ $REPLY == 93 ]]; then
 	Contributors
 fi
 
-
 }
 
 
-showMainMen
+showMainMenu
