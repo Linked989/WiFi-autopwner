@@ -47,7 +47,7 @@ fi
 source $(dirname $0)/lang/main.sh
 
 function selectInterface {
-	clear
+	#clear
 	COUNTER=0
 
 	while read -r line ; do
@@ -88,7 +88,7 @@ function selectInterface {
 
 function putInMonitorMode {
 	if [[ "$IFACE" ]]; then
-		clear
+		#clear
 		sudo ip link set "$IFACE" down && sudo iw "$IFACE" set monitor control && sudo ip link set "$IFACE" up
 
 		if [ $REPLY -eq 71 ]; then
@@ -107,7 +107,7 @@ function putInMonitorMode {
 
 function putInManagedMode {
 	if [[ "$IFACE" ]]; then
-		clear
+		#clear
 		sudo ip link set "$IFACE" down && sudo iw "$IFACE" set type managed && sudo ip link set "$IFACE" up
 		sudo systemctl start NetworkManager
 		REPLY=""
@@ -121,7 +121,7 @@ function putInManagedMode {
 
 function putInMonitorModePlus {
 	if [[ "$IFACE" ]]; then
-		clear
+		#clear
 		sudo systemctl stop NetworkManager
 		sudo airmon-ng check kill
 		sudo ip link set "$IFACE" down && sudo iw "$IFACE" set monitor control && sudo ip link set "$IFACE" up
@@ -1122,7 +1122,7 @@ function creatAP {
 			showMainMenu
 		fi
 	else
-		clear
+		#clear
 		echo ${Lang[Strings5]}
 		REPLY=""
 		read -n 1 -s -r -p "${Lang[Strings69]}"
@@ -1133,7 +1133,7 @@ function creatAP {
 
 
 
-clear
+#clear
 COUNTER=0
 
 while read -r line ; do
