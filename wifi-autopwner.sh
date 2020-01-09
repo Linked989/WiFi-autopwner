@@ -7,7 +7,9 @@ IFACE=""
 if [ "$1" == "" ] || [ $# -gt 1 ]; then
 	REPLY=""
 else
+	echo $1
    REPLY=$1
+   read -p "Press [Enter] key to start"
 fi
 
 
