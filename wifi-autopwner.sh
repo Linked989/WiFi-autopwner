@@ -7,7 +7,7 @@ IFACE=""
 if [ "$1" == "" ] || [ $# -gt 1 ]; then
 	REPLY=""
 else
-   REPLY = $1
+   REPLY=$1
 
 
 source $(dirname $0)/settings.sh
