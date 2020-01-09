@@ -9,6 +9,7 @@ if [ "$1" == "" ] || [ $# -gt 1 ]; then
 else
 	echo $1
    REPLY=$1
+   echo $REPLY
    read -p "Press [Enter] key to start"
 fi
 
