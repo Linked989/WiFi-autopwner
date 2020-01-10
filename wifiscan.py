@@ -68,10 +68,10 @@ def getSSIDs():
 	return cells
 
 def listSSIDs(cells):
-	print("#" * 75)
+	print(" " * 3 + "#" * 75)
 	for cell in cells:
 		print(" " * 3 + "SSID: %s | Encrypted: %s | Signal: %s" % (cell.ssid, cell.encrypted, cell.signal))
-	print("#" * 75)
+	print(" " * 3 + "#" * 75)
 	print("")
 
 
