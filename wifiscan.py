@@ -1,4 +1,4 @@
-from wifi import Cell, Scheme
+import wifi #import Cell, Scheme
 import socket, os
 #scheme=SchemeWPA('wlan0',cell.ssid,{"ssid":xfinitywifi})
 verbose = True
@@ -66,7 +66,7 @@ def getSSIDs():
 	TryAgain = 0
 	print("[+] Scanning for Access Points")
 	while TryAgain <= 4:
-		cells = list(Cell.all('wlan0')) # This uses the wifi library to scan for Wireless Access points
+		cells = list(wifi.Cell.all('wlan0')) # This uses the wifi library to scan for Wireless Access points
 		TryAgain += 1
 	numCells = len(list(cells))
 	print("[+] %s APs detected" % numCells)
