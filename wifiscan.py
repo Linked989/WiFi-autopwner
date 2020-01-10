@@ -136,7 +136,7 @@ def Delete(ssid):
     return False
 
 if __name__ == "__main__":
-	wifiUp()
+	#wifiUp()
 	banner()
 	cells = getSSIDs()
 	listUn(cells)
