@@ -36,7 +36,7 @@ def listUn(cells):
 			UnCount += 1
 			print("[+] %s: Unencrypted Network found!" % cell.ssid)
 			print("  - attempting to join")
-			print Connect(cell.ssid)
+			print(Connect(cell.ssid))
 	if UnCount == 0:
 		print("[-] None of detected networks were Unencrypted, starting El Chapo AP")
 
