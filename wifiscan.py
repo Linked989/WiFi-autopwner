@@ -58,7 +58,7 @@ def getSSIDs():
 	TryAgain = 0
 	print("[+] Scanning for Access Points")
 	while TryAgain <= 4:
-		cells = Cell.all('wlan0') # This uses the wifi library to scan for Wireless Access points
+		cells = list(Cell.all('wlan0')) # This uses the wifi library to scan for Wireless Access points
 		TryAgain += 1
 	listSSIDs(cells)
 	numCells = len(list(cells))
