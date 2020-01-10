@@ -62,9 +62,8 @@ def getSSIDs():
 		numCells = len(list(cells))
 		TryAgain += 1
 	print("[+] %s APs detected" % numCells)
-	if verbose:
-		for cell in cells:
-			print("SSID: %s Encrypted: %s Signal: %s" % (cell.ssid, cell.encrypted, cell.signal))
+	for cell in cells:
+		print("SSID: %s Encrypted: %s Signal: %s" % (cell.ssid, cell.encrypted, cell.signal))
 	return cells
 
 
