@@ -1,6 +1,8 @@
 from wifi import Cell, Scheme
 import socket, os
 
+verbose = True
+
 def wifiUp():
 	cmd = 'ifconfig wlan0 up'
 	os.system(cmd)
@@ -24,23 +26,16 @@ def internet(host="8.8.8.8", port=53, timeout=3):
 		return False
 
 
-def listUn():
+def listUn(cells):
 	'''
 	Scan for open (unencrypted) wireless access points)
 	'''
 	UnCount = 0
-	TryAgain = 0
-	print("[+] Scanning for Access Points")
-	while UnCount == 0 and TryAgain <= 4:
-		cells = Cell.all('wlan0') # This uses the wifi library to scan for Wireless Access points
-		numCells = len(list(cells))
-		for cell in cells:
-			if cell.encrypted == False:
-				UnCount += 1
-				joinWifi(cell)
-		TryAgain += 1
-	print("[+] %s APs detected" % numCells)
-	print("[-] However none were Unencrypted, starting El Chapo AP")
+	for cell in cells:
+		if cell.encrypted == False:
+			UnCount += 1
+			joinWifi(cell)
+	print("[-] None of detected networks were Unencrypted, starting El Chapo AP")
 
 
 
@@ -56,11 +51,28 @@ def joinWifi(cell):
 		Delete(ssid)
 		return False
 
+def getSSIDs():
+	'''
+	Scan for open (unencrypted) wireless access points)
+	'''
+	TryAgain = 0
+	print("[+] Scanning for Access Points")
+	while TryAgain <= 4:
+		cells = Cell.all('wlan0') # This uses the wifi library to scan for Wireless Access points
+		numCells = len(list(cells))
+		TryAgain += 1
+	print("[+] %s APs detected" % numCells)
+	if verbose:
+		for cell in cells:
+			print("SSID: %s Encrypted: %s Signal: %s" % (cell.ssid, cell.encrypted, cell.signal))
+	return cells
+
 
 if __name__ == "__main__":
-	banner()
 	wifiUp()
-	listUn()
+	banner()
+	cells = getSSIDs()
+	listUn(cells)
 	if internet():
 		print("Host is online, lets start digging :)")
 	else:
