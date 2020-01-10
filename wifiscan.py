@@ -34,8 +34,10 @@ def listUn(cells):
 	for cell in cells:
 		if cell.encrypted == False:
 			UnCount += 1
-			joinWifi(cell)
-	print("[-] None of detected networks were Unencrypted, starting El Chapo AP")
+			print("[+] %s: Unencrypted Network found!" % cell.ssid)
+			#joinWifi(cell)
+	if UnCount == 0:
+		print("[-] None of detected networks were Unencrypted, starting El Chapo AP")
 
 
 
@@ -60,9 +62,9 @@ def getSSIDs():
 	while TryAgain <= 4:
 		cells = list(Cell.all('wlan0')) # This uses the wifi library to scan for Wireless Access points
 		TryAgain += 1
-	listSSIDs(cells)
 	numCells = len(list(cells))
 	print("[+] %s APs detected" % numCells)
+	listSSIDs(cells)
 	return cells
 
 def listSSIDs(cells):
