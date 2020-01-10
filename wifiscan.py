@@ -1,6 +1,6 @@
 from wifi import Cell, Scheme
 import socket, os
-
+#scheme=SchemeWPA('wlan0',cell.ssid,{"ssid":xfinitywifi})
 verbose = True
 
 def wifiUp():
@@ -35,23 +35,28 @@ def listUn(cells):
 		if cell.encrypted == False:
 			UnCount += 1
 			print("[+] %s: Unencrypted Network found!" % cell.ssid)
-			print("   - attempting to join")
-			#joinWifi(cell)
+			print("  - attempting to join")
+			joinWifi(cell)
 	if UnCount == 0:
 		print("[-] None of detected networks were Unencrypted, starting El Chapo AP")
 
+
+def AddScheme(cell, password=None):
+	if not cell:
+		return False
+	scheme = wifi.Scheme.for_cell('wlan0', cell.ssid, cell, password)
+	scheme.save()
+	return scheme
 
 
 def joinWifi(cell):
 	'''
 	Join the open wifi and see if we have internet access
 	'''
-	print("Testing SSID: %s" % (cell.ssid))
-	scheme = Add(cell)
+	scheme = AddScheme(cell)
 	try:
 		scheme.activate()
 	except wifi.exceptions.ConnectionError:
-		Delete(ssid)
 		return False
 
 def getSSIDs():
